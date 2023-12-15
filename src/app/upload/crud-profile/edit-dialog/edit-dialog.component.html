@@ -1,0 +1,13 @@
+<!-- Display and edit the data as needed -->
+<form class="form-floating" (ngSubmit)="onSubmit()">
+    
+      <div>
+        <label for="player_Image">Image file</label>
+        <input type="file" id="inputFile_playerImage" name="inputFile_playerImage" (change)="onFileSelected_playerImage($event)" accept=".png"  />
+      </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+      <button type="button" class="btn btn-primary m-1"(click)="onNoClick()">Cancel</button>
+    </div>
+  </form>
+  

@@ -1,0 +1,35 @@
+nav{
+    display: flex;
+    justify-content: center;
+}
+nav a  {
+    margin: 30px;
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid grey;
+    font-family: "Century Gothic Regular";
+    transition: 0.5s;
+}
+nav a:hover,.active{
+    background-color: rgb(1, 139, 98);
+    color: white;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+.active {
+    background-color: rgb(1, 63, 44);
+    color: white !important ;
+    padding-right: 25px;
+    padding-left: 25px;
+
+}
+.positionWeight,.positionWeightIndex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

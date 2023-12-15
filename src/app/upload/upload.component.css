@@ -1,0 +1,155 @@
+/* Century Gothic */
+@font-face {
+    font-family: "Century Gothic";
+    src: local("Century Gothic"), local("CenturyGothic"), url('../../assets/CenturyGothic/CenturyGothic.ttf') format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Century Gothic Bold";
+    src: local("Century Gothic Bold"), url('../../assets/CenturyGothic/GOTHICB0.ttf') format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Century Gothic Regular";
+    src: local("Century Gothic Regular"), url('../../assets/CenturyGothic/GOTHIC.ttf') format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Century Gothic Regular TTF";
+    src: local("Century Gothic Regular TTF"), url('../../assets/CenturyGothic/Century Gothic.ttf') format("truetype");
+  }
+  
+  @font-face {
+    font-family: "Century Gothic Bold TTF";
+    src: local("Century Gothic Bold TTF"), url('../../assets/CenturyGothic/gothicb.ttf') format("truetype");
+  }
+*{
+    font-family: "Century Gothic Regular";
+    
+}
+
+header{
+    font-family: "Century Gothic Bold TTF";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/bar01.png');
+    background-size:contain ;
+    color: aliceblue;
+   
+    
+  }
+nav{
+    display: flex;
+    justify-content: center;
+}
+nav a  {
+    margin: 30px;
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid grey;
+    font-family: "Century Gothic Regular";
+    transition: 0.5s;
+}
+nav a:hover,.active{
+    background-color: rgb(1, 139, 98);
+    color: white;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+.active {
+    background-color: rgb(1, 63, 44);
+    color: white !important ;
+    padding-right: 25px;
+    padding-left: 25px;
+
+}
+/* .Div_table{
+  display: flex;
+  justify-content: center;
+} */
+.player_Div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.uploadDiv{
+    display: flex;
+    justify-content: center;
+    
+
+}
+.uploadDiv div button,.uploadDiv div input{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    align-items: center;
+  flex-direction: column;
+}
+.Upload_butt{
+  background-color: rgb(1, 63, 44);
+  color: white;
+  padding: 10px;
+  border: 0px solid;
+  border-radius: 10px;
+  cursor:pointer;
+}
+.Upload_butt:hover{
+  background-color: rgb(1, 139, 98);
+
+}
+.Upload_butt span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.Upload_butt:hover span {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.Upload_butt:hover span:after {
+  opacity: 1;
+  right: 0;
+  background-color: rgb(1, 63, 44);
+
+}
+.Upload_butt span :after {
+  content: '';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  background-color: rgb(1, 63, 44);
+}
+input[type="file"]::file-selector-button {
+  padding: 10px;
+  background-color: rgb(1, 63, 44);
+  border: 1px  solid ;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+input[type="file"]::file-selector-button:hover{
+  color: black;
+  background-color: #D1B000;
+  padding-right: 25px;
+  padding-left: 25px;
+
+}
+input[type="file"]{
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 10px ;
+}
+

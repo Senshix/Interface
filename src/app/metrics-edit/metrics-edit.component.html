@@ -1,0 +1,61 @@
+<div>
+  <nav>
+    <a href="#" [class.active]="isActive_Edit" (click)="showNav()">Edit Weights</a>
+  </nav>
+  <nav [hidden]="!navBar">
+    <a href="#" [class.active]="isActive_Position" (click)="showPosition()">Position Weight</a>
+    <a href="#" [class.active]="isActive_PositionIndex" (click)="showPositionIndex()">Position Index Weight</a>
+  </nav>
+  <div [hidden]="!positionWeight_div">
+    <div class="positionWeight">
+      Position Weight
+      <div>
+        <!-- Dropdown to select position key -->
+        <label for="positionSelect">Select a position:</label>
+        <select id="positionSelect" [(ngModel)]="selectedPosition">
+          <option *ngFor="let position of positionWeights  | keyvalue" >{{ position.key }}</option>
+        </select>
+      </div>
+      <!-- Display selected position's values -->
+      <div *ngIf="selectedPosition">
+        <h3>{{ selectedPosition }}</h3>
+        <div *ngFor="let prop of positionWeights[selectedPosition] | keyvalue">
+          <p >{{ prop.key }}:</p>
+          <ul>
+            <li *ngFor="let innerProp of prop.value | keyvalue">
+              {{ innerProp.key }}: 
+              <input type="number" min="0" max="1" [ngModel]="innerProp.key" [(ngModel)]="innerProp.value" [step]="step"
+       (keydown)="handleKey($event)" (keyup)="handleKey($event)" (ngModelChange)="handleValueChange($event,innerProp,prop,selectedPosition)">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="!positionIndexWeight_div">
+    <div class="positionWeightIndex">
+      Position Weight Index
+      <div>
+        <!-- Dropdown to select position key -->
+        <label for="positionSelect">Select a position:</label>
+        <select id="positionSelect" [(ngModel)]="selectedPositionIndex">
+          <option *ngFor="let position of positionIndexWeightKeys" [value]="position">{{ position }}</option>
+        </select>
+      </div>
+      <!-- Display selected position's values -->
+      <div *ngIf="selectedPositionIndex">
+        <h3>{{ selectedPositionIndex }}</h3>
+        <div *ngFor="let prop of positionIndexWeights[selectedPositionIndex] | keyvalue">
+          <p>{{ prop.key }}: 
+            <input type="number" min="0" max="1" [(ngModel)]="prop.value" [step]="step"
+       (keydown)="handleKey($event)" (keyup)="handleKey($event)" (ngModelChange)="handleValueChangeIndex($event,prop,selectedPositionIndex)">
+          <!-- Add mat-slider for prop.value -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [hidden]="!isActive_Submit">
+    <button type="button" (click)="onSubmit()">Submit</button>
+  </div>
+</div>

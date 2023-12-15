@@ -1,0 +1,56 @@
+<header>
+    <h2>CSV To  DATABASE</h2>
+</header>
+<nav>
+    <a href="#" [class.active]="isActive_playerProfile" (click)="showPlayerProfile()">Player Profile</a>
+    <a href="#" [class.active]="isActive_playerMetrics" (click)="showPlayerMetrics()">Player Metrics</a>
+    <a href="#" [class.active]="isActive_matches" (click)="showMatches()">Matches</a>
+    <a href="#" [class.active]="isActive_matchesProfiles" (click)="showMatches_Profiles()">Matches Profiles</a>
+    <a href="#" [class.active]="isActive_matchesZip" (click)="showMatchesZip()">Matches Zip</a>
+
+</nav>
+
+
+<div class="uploadDiv">
+    <div [hidden]="!playerProfile_Div" >
+        <div class="Div_table player_Div">
+            <label for="inputFile_playerProfile">CSV Player Profile table </label>
+            <input type="file" id="inputFile_playerProfile" name="inputFile_playerProfile" accept=".csv" (change)="onFileSelected_playerProfile($event)" />
+            <button (click)="uploadFile_playerProfile()" class="Upload_butt"><span>Upload</span></button>
+         </div>
+         <!-- <div>
+            <app-crud-profile></app-crud-profile>
+        </div> -->
+    </div>
+    <div [hidden]="!playerMetrics_Div" class="Div_table" >
+       <div class="player_Div">
+        <label for="inputFile_playerMetrics">CSV Player Metrics table </label>
+        <input type="file" id="inputFile_playerMetrics" name="inputFile_playerMetrics" accept=".csv" (change)="onFileSelected_playerMetrics($event)" />
+        <button   class="Upload_butt" (click)="uploadFile_playerMetrics()"><span>Upload</span></button>
+        <div>
+            <app-metrics-edit></app-metrics-edit>
+        </div>
+       </div>
+    </div>
+    <div class="Div_table" [hidden]="!matches_Div" >
+        <div class="player_Div">
+            <label for="inputFile_matches">CSV  Matches Table </label>
+            <input type="file" id="inputFile_matches" name="inputFile_matches" accept=".csv" (change)="onFileSelected_matches($event)" />
+            <button   class="Upload_butt" (click)="uploadFile_matches()"><span>Upload</span></button>
+        </div>
+    </div>
+    <div class="Div_table" [hidden]="!matchesProfiles_Div" >
+        <div class="player_Div">
+            <label for="inputFile_matchesProfiles">CSV  Matches Profiles Table </label>
+            <input type="file" id="inputFile_matchesProfiles" name="inputFile_matchesProfiles" accept=".csv" (change)="onFileSelected_matchesProfiles($event)" />
+            <button   class="Upload_butt" (click)="uploadFile_matchesProfiles()"><span>Upload</span></button>
+        </div>
+    </div>
+    <div class="Div_table" [hidden]="!matchesZip_Div" >
+        <div class="player_Div">
+            <label for="inputFile_matchesZip">Zip Matches Table </label>
+            <input type="file" id="inputFile_matchesZip" name="inputFile_matchesZip" accept="" (change)="onFileSelected_matchesZip($event)" />
+            <button   class="Upload_butt" (click)="uploadFile_matchesZip()"><span>Upload</span></button>
+        </div>
+    </div>
+</div>

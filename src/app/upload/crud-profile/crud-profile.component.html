@@ -1,0 +1,40 @@
+<div class="mat-elevation-z8">
+  <mat-form-field>
+    <mat-label>Search by Wyscout Name</mat-label>
+    <input matInput (input)="applyFilter($event)">
+  </mat-form-field>
+    <table mat-table [dataSource]="dataSource">
+      <!-- Replace the 'matColumnDef' values with the correct keys from your data -->
+      <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+        <th mat-header-cell *matHeaderCellDef> {{ col }} </th>
+        <td mat-cell *matCellDef="let myRowData">
+          <!-- Check if the current column is 'image_path' -->
+          <ng-container *ngIf="col !== 'Image' && col !== 'Équipe Logo'; else imageCell">
+            {{ myRowData[col] }}
+          </ng-container>
+          <!-- Display the image if the current column is 'image_path' -->
+          <ng-template #imageCell>
+            <img [src]="getImageUrl(myRowData[col])" alt="Image" width="70px">
+          </ng-template>
+        </td>
+      </ng-container>
+  
+      <!-- Additional column for actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let myRowData">
+          <button mat-icon-button (click)="editData(myRowData)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- Add more buttons for other actions as needed -->
+        </td>
+      </ng-container>
+      <!-- Header row with column names including the actions column -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns.concat('actions')"></tr>
+      <!-- Data rows including the actions column -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns.concat('actions');"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons aria-label="Select page of Players"></mat-paginator>
+  </div>
+  
