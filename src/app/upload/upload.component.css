@@ -61,6 +61,11 @@ nav a:hover,.active{
     margin-right: 25px;
     margin-left: 25px;
 }
+nav a:hover,.active+.Sync:hover{
+  background-color: rgb(1, 139, 98);
+  fill: aliceblue;
+}
+
 .active {
     background-color: rgb(1, 63, 44);
     color: white !important ;
@@ -99,6 +104,7 @@ nav a:hover,.active{
   border-radius: 10px;
   cursor:pointer;
 }
+
 .Upload_butt:hover{
   background-color: rgb(1, 139, 98);
 

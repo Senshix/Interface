@@ -32,6 +32,11 @@ uploadCSV_selectedFile_matches(file: File): Observable<any> {
   formData.append('csvFile', file);
   return this.http.post<any>(`${this.apiUrl}/upload-csv/matches`, formData);
 }
+uploadCSV_selectedFile_matchesJunior(file: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('csvFile', file);
+  return this.http.post<any>(`${this.apiUrl}/upload-csv/matchesJunior`, formData);
+}
 uploadCSV_selectedFile_matchesProfiles(file: File): Observable<any> {
   const formData = new FormData();
   formData.append('csvFile', file);
@@ -59,5 +64,8 @@ getMetricsVar(){
 updateMetricsVar(newData: MetricsData): Observable<any> {
   const url = `${this.apiUrl}/get-csv/MetricsVar`;
   return this.http.put(url, newData);
+}
+performCalculations(): Observable<any> {
+  return this.http.get(`${this.apiUrl}/getMergedPlayerData`, {});
 }
 }
