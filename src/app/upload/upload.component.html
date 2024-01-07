@@ -3,7 +3,7 @@
 </header>
 <nav>
     <a href="#" [class.active]="isActive_playerProfile" (click)="showPlayerProfile()">Player Profile</a>
-    <a href="#" [class.active]="isActive_playerMetrics" (click)="showPlayerMetrics()">Player Metrics</a>
+    <a href="#" [class.active]="isActive_playerProfileInter" (click)="showPlayerProfileInter()">Player Profile  International</a>
     <a href="#" [class.active]="isActive_matches" (click)="showMatches()">Matches</a>  
     <a href="#" [class.active]="isActive_matchesJunior" (click)="showMatchesJunior()">Matches Junior</a>
     <a href="#" [class.active]="isActive_matchesProfiles" (click)="showMatches_Profiles()">Matches Profiles</a>
@@ -23,6 +23,13 @@
          <div>
             <app-crud-profile></app-crud-profile>
         </div>
+    </div>
+    <div [hidden]="!playerProfileInter_Div" >
+        <div class="Div_table player_Div">
+            <label for="inputFile_playerProfileInter">CSV Player Profile International table </label>
+            <input type="file" id="inputFile_playerProfileInter" name="inputFile_playerProfileInter" accept=".csv" (change)="onFileSelected_playerProfileInter($event)" />
+            <button (click)="uploadFile_playerProfileInter()" class="Upload_butt"><span>Upload</span></button>
+         </div>
     </div>
     <div [hidden]="!playerMetrics_Div" class="Div_table" >
        <div class="player_Div">

@@ -22,6 +22,11 @@ export class ApiService {
   formData.append('csvFile', file);
   return this.http.post<any>(`${this.apiUrl}/upload-csv/playerProfile`, formData);
 }
+uploadCSV_playerProfileInter(file: File): Observable<any> {
+  const formData = new FormData();
+  formData.append('csvFile', file);
+  return this.http.post<any>(`${this.apiUrl}/upload-csv/playerProfileInter`, formData);
+}
 uploadCSV_playerMetrics(file: File): Observable<any> {
   const formData = new FormData();
   formData.append('csvFile', file);

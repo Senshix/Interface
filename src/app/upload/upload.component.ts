@@ -13,18 +13,21 @@ import { Location } from '@angular/common';
 })
 export class UploadComponent {
   selectedFile_playerProfile: File | null = null;
+  selectedFile_playerProfileInter: File | null = null;
   selectedFile_playerMetrics: File | null = null;
   selectedFile_matches: File | null = null;
   selectedFile_matchesJunior: File | null = null;
   selectedFile_matchesProfiles: File | null = null;
   selectedFile_matchesZip: File | null = null;
   playerProfile_Div: boolean = true;
+  playerProfileInter_Div: boolean = false;
   playerMetrics_Div: boolean = false;
   matches_Div: boolean = false;
   matchesJunior_Div: boolean = false;
   matchesProfiles_Div: boolean = false;
   matchesZip_Div: boolean = false;
   isActive_playerProfile : boolean = true;
+  isActive_playerProfileInter : boolean = false;
   isActive_playerMetrics : boolean = false;
   isActive_matches: boolean = false;
   isActive_matchesJunior: boolean = false;
@@ -35,11 +38,22 @@ export class UploadComponent {
   constructor(private apiService: ApiService, private location: Location) {}
   showPlayerProfile(){
     this.playerProfile_Div = this.isActive_playerProfile= true;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= false;
     this.matches_Div= this.isActive_matches=false;
     this.playerMetrics_Div= this.isActive_playerMetrics=false;
     this.matchesProfiles_Div=this.isActive_matchesProfiles=false;
     this.matchesZip_Div=this.isActive_matchesZip=false;
     this.matchesJunior_Div= this.isActive_matchesJunior=false;
+  }
+  showPlayerProfileInter(){
+    this.playerProfile_Div = this.isActive_playerProfile= false;
+    this.matches_Div= this.isActive_matches=false;
+    this.playerMetrics_Div= this.isActive_playerMetrics=false;
+    this.matchesProfiles_Div=this.isActive_matchesProfiles=false;
+    this.matchesZip_Div=this.isActive_matchesZip=false;
+    this.matchesJunior_Div= this.isActive_matchesJunior=false;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= true;
+
   }
   showPlayerMetrics(){
     this.playerMetrics_Div= this.isActive_playerMetrics=true;
@@ -48,6 +62,8 @@ export class UploadComponent {
     this.matchesProfiles_Div=this.isActive_matchesProfiles=false;
     this.matchesZip_Div=this.isActive_matchesZip=false;
     this.matchesJunior_Div= this.isActive_matchesJunior=false;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= false;
+
   }
   showMatches(){
     this.matches_Div= this.isActive_matches=true;
@@ -56,6 +72,8 @@ export class UploadComponent {
     this.matchesProfiles_Div=this.isActive_matchesProfiles=false;
     this.matchesZip_Div=this.isActive_matchesZip=false;
     this.matchesJunior_Div= this.isActive_matchesJunior=false;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= false;
+
 
   }
   showMatchesJunior(){
@@ -65,6 +83,8 @@ export class UploadComponent {
     this.playerMetrics_Div= this.isActive_playerMetrics=false;
     this.matchesProfiles_Div=this.isActive_matchesProfiles=false;
     this.matchesZip_Div=this.isActive_matchesZip=false;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= false;
+
   }
   showMatches_Profiles(){
     this.matchesProfiles_Div=this.isActive_matchesProfiles=true;
@@ -72,6 +92,8 @@ export class UploadComponent {
     this.playerMetrics_Div= this.isActive_playerMetrics=false;
     this.playerProfile_Div = this.isActive_playerProfile= false;
     this.matchesZip_Div=this.isActive_matchesZip=false;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= false;
+
     this.matchesJunior_Div= this.isActive_matchesJunior=false;
 
   }
@@ -82,10 +104,14 @@ export class UploadComponent {
     this.playerMetrics_Div= this.isActive_playerMetrics=false;
     this.playerProfile_Div = this.isActive_playerProfile= false;
     this.matchesJunior_Div= this.isActive_matchesJunior=false;
+    this.playerProfileInter_Div = this.isActive_playerProfileInter= false;
 
   }
   onFileSelected_playerProfile(event: any) {
     this.selectedFile_playerProfile = event.target.files[0];
+  }
+  onFileSelected_playerProfileInter(event: any) {
+    this.selectedFile_playerProfileInter = event.target.files[0];
   }
   onFileSelected_playerMetrics(event: any) {
     this.selectedFile_playerMetrics = event.target.files[0];
@@ -106,6 +132,21 @@ export class UploadComponent {
   uploadFile_playerProfile() {
     if (this.selectedFile_playerProfile) {
       this.apiService.uploadCSV_playerProfile(this.selectedFile_playerProfile).subscribe(
+        (data) => {
+          console.log('Upload successful:', data);
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Error uploading file:', error);
+        })
+        ;
+    } else {
+      console.error('No file selected.');
+    }
+  }
+  uploadFile_playerProfileInter() {
+    if (this.selectedFile_playerProfileInter) {
+      this.apiService.uploadCSV_playerProfileInter(this.selectedFile_playerProfileInter).subscribe(
         (data) => {
           console.log('Upload successful:', data);
           window.location.reload();
@@ -208,7 +249,7 @@ export class UploadComponent {
       },
       (error) => {
         // Handle any errors that occurred during the API request
-        console.error('API Erereror:', error);
+        console.error('API Error:', error);
       }
     );
   }
