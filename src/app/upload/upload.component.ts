@@ -208,7 +208,7 @@ export class UploadComponent {
       },
       (error) => {
         // Handle any errors that occurred during the API request
-        console.error('API Error:', error);
+        console.error('API Erereror:', error);
       }
     );
   }
